@@ -1,25 +1,21 @@
 import { useState } from "react";
+import Wall from "./components/Wall/Wall";
+import Bookshelf from "./components/Bookshelf/Bookshelf";
 import Navbar from "./components/Navbar/Navbar";
-import Corkboard from "./components/Corkboard/Corkboard";
-import Posters from "./components/Posters/Posters";
-import Grid from "@mui/material/Unstable_Grid2";
-import Lamp from "./components/Lamp/Lamp";
+import { Box } from "@mui/material";
 
 function App() {
-
   return (
-    <>
-      <Navbar />
-      <Grid container spacing={12}>
-        <Grid>
-          <Corkboard />
-        </Grid>
-        <Grid>
-          <Posters />
-        </Grid>
-        <Lamp />
-      </Grid>
-    </>
+
+      <Box  sx={{
+        backgroundImage: `url("/images/wallpaper.jpeg")`,
+        backgroundSize: "fill"
+      }}>
+        <Navbar />
+        <Wall />
+        <Bookshelf />
+      </Box>
+
   );
 }
 

@@ -2,11 +2,9 @@ import { Box } from "@mui/material";
 
 function Navbar() {
   return (
-    <div>
-      <Box>
-        <img src="/images/Banner.png" alt="no shelf control" />
-      </Box>
-    </div>
+    <Box sx={{ p: 5 }}>
+      <img src="/images/Banner.png" alt="no shelf control" />
+    </Box>
   );
 }
 
