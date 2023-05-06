@@ -6,15 +6,16 @@ import Grid from "@mui/material/Unstable_Grid2";
 
 export default function Posters() {
   return (
-    <Grid container spacing={12}>
+    <Grid container spacing={2}>
       <Grid>
         <Card sx={{ maxWidth: 200 }}>
           <CardActionArea>
             <CardMedia
               component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
+              height="200"
+              width='120'
+              image="/images/content.jpg"
+              alt="featured book"
             />
           </CardActionArea>
         </Card>
@@ -24,9 +25,10 @@ export default function Posters() {
           <CardActionArea>
             <CardMedia
               component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
+              height="200"
+              width='120'
+              image="/images/content.jpg"
+              alt="featured book"
             />
           </CardActionArea>
         </Card>
@@ -36,9 +38,10 @@ export default function Posters() {
           <CardActionArea>
             <CardMedia
               component="img"
-              height="140"
-              image="/static/images/cards/contemplative-reptile.jpg"
-              alt="green iguana"
+              height="200"
+              width='120'
+              image="/images/content.jpg"
+              alt="featured book"
             />
           </CardActionArea>
         </Card>
