@@ -1,9 +1,11 @@
 import { Box } from "@mui/material";
+import Lamp from "../Lamp/Lamp";
 
 function Navbar() {
   return (
-    <Box sx={{ p: 5 }}>
-      <img src="/images/Banner.png" alt="no shelf control" />
+    <Box display={"flex"} justifyContent={"space-between"} flexWrap={"wrap"}>
+      <img src="/images/Banner.png" height={100} alt="no shelf control" />
+      <Lamp />
     </Box>
   );
 }
