@@ -37,7 +37,7 @@ let userBooks = [
 
 function BookList() {
     return (
-        <Box display={"flex"} justifyContent={"start"}>
+        <Box display={"flex"} justifyContent={"center"}>
             {/* some sort of component for the infinite scroll */}
             {/* this will pass each book of the user as a prop and create a book component for each */}
             {userBooks.map((book) => (

@@ -3,7 +3,7 @@ import BookList from "../BookList/BookList";
 
 const Bookshelf = () => {
     return (
-        <Box display={"flex"} justifyContent={"center"} marginTop={10}>
+        <Box marginTop={10}>
             <BookList />
         </Box>
     );
