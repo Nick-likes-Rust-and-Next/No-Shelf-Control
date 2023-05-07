@@ -1,21 +1,18 @@
 import Corkboard from "../Corkboard/Corkboard";
 import Posters from "../Posters/Posters";
-import Lamp from "../Lamp/Lamp";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { Box, Typography } from "@mui/material";
 
 function Wall() {
   return (
-    <Grid2 container spacing={2}>
-      <Grid2>
-        <Corkboard />
-      </Grid2>
-      <Grid2>
-        <Posters />
-      </Grid2>
-      <Grid2>
-        <Lamp />
-      </Grid2>
-    </Grid2>
+    <Box display={"flex"} justifyContent={"space-evenly"} flexWrap={"wrap"} sx={{paddingTop:5}}>
+      <Corkboard />
+      <Box>
+        <Typography variant="h4" m={2} align="center" color={"white"} sx={{ border: "1px solid white" }}>
+          Featured Books
+        </Typography>
+      <Posters />
+      </Box>
+    </Box>
   );
 }
 

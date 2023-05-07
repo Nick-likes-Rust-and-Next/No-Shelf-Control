@@ -3,7 +3,7 @@ import BookList from "../BookList/BookList";
 
 const Bookshelf = () => {
     return (
-        <Box>
+        <Box marginTop={10}>
             <BookList />
         </Box>
     );
