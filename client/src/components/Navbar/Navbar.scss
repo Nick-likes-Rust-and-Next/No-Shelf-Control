@@ -1,0 +1,19 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background: #494949;
+    height: 100px;
+
+    .logo img {
+        width: 35%;
+        margin-top: -35px;
+        padding-left: 10px;
+    }
+
+    nav {
+        font-size: 30px;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+    }
+}
