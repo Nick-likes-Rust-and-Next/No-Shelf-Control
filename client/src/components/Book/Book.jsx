@@ -16,6 +16,7 @@ function Book({ book }) {
             sx={{
                 width: "300px",
                 height: "60px",
+                minWidth: "195px",
                 backgroundColor: bgColor,
                 rotate: "-90deg",
                 color: "white",
