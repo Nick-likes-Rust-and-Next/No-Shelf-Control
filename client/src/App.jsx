@@ -1,32 +1,32 @@
 import { useState } from "react";
-import Wall from "./components/Wall/Wall";
-import Bookshelf from "./components/Bookshelf/Bookshelf";
-import Navbar from "./components/Navbar/Navbar";
-import { Box } from "@mui/material";
-import { Routes, Route } from 'react-router-dom';
-import Layout from './pages/layout';
-import Dashboard from './pages/dashboard/dashboard';
+import { Routes, Route } from "react-router-dom";
+import Layout from "./pages/layout";
+import Dashboard from "./pages/dashboard/dashboard";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 function App() {
+  const [mode, setMode] = useState(true);
+  const theme = createTheme({
+    palette: {
+      mode: mode ? "light" : "dark",
+    },
+  });
+
+  const changeTheme = () => {
+    setMode(!mode);
+    console.log(theme);
+  };
+
   return (
-
     <>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Dashboard />} />
-        </Route>
-      </Routes>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/" element={<Layout themeSwitch={changeTheme} />}>
+            <Route index element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </ThemeProvider>
     </>
-
-      // <Box  sx={{
-      //   backgroundImage: `url("/images/wallpaper.jpeg")`,
-      //   backgroundSize: "fill"
-      // }}>
-      //   <Navbar />
-      //   <Wall />
-      //   <Bookshelf />
-      // </Box>
-
   );
 }
 

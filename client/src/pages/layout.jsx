@@ -2,10 +2,10 @@ import React from 'react'
 import Navbar from '../components/Navbar/Navbar';
 import { Outlet } from 'react-router-dom';
 
-function Layout() {
+function Layout(props) {
   return (
     <div className='app'>
-        <Navbar />
+        <Navbar themeSwitch={props.themeSwitch}/>
         <div className='page'>
           <Outlet />
         </div>
