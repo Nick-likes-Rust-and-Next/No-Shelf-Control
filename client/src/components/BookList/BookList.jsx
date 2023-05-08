@@ -65,7 +65,7 @@ function BookList() {
                 <SwiperSlide>{book.title}</SwiperSlide>
             ))}
         </Swiper>
-    );
+  );
 }
 
 export default BookList;
