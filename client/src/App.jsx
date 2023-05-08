@@ -13,13 +13,10 @@ function App() {
     },
   });
 
-
-
   const changeTheme = () => {
     setMode(!mode);
-    console.log(theme) 
-  }
-
+    console.log(theme);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -29,7 +26,7 @@ function App() {
           backgroundSize: "fill",
         }}
       >
-        <Navbar lampSwitch={changeTheme}/>
+        <Navbar lampSwitch={changeTheme} />
         <Wall />
         <Bookshelf />
       </Box>
