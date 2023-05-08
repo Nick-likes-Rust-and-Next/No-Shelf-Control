@@ -1,14 +1,14 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import { CardActionArea } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import { Box, CardActionArea } from "@mui/material";
+
 
 export default function Posters() {
   return (
-    <Grid container spacing={2}>
-      <Grid>
-        <Card sx={{ maxWidth: 200 }}>
+    <Box display={"flex"} justifyContent={"space-around"} flexWrap={"wrap"}>
+
+        <Card sx={{ maxWidth: 200, mx:5, my: 2 }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -19,9 +19,8 @@ export default function Posters() {
             />
           </CardActionArea>
         </Card>
-      </Grid>
-      <Grid>
-        <Card sx={{ maxWidth: 200 }}>
+
+        <Card sx={{ maxWidth: 200, mx:5, my: 2 }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -32,9 +31,8 @@ export default function Posters() {
             />
           </CardActionArea>
         </Card>
-      </Grid>
-      <Grid>
-        <Card sx={{ maxWidth: 200 }}>
+ 
+        <Card sx={{ maxWidth: 200, mx:5, my: 2 }}>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -45,7 +43,7 @@ export default function Posters() {
             />
           </CardActionArea>
         </Card>
-      </Grid>
-    </Grid>
+
+    </Box>
   );
 }
