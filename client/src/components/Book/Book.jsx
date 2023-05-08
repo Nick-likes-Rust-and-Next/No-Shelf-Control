@@ -23,7 +23,7 @@ function Book({ book }) {
                 border: "2px Solid black",
                 borderRadius: "6px",
                 transition: "all .2s ease-in-out",
-                "&:hover": { transform: "scale(1.5)" }
+                "&:hover": { transform: "scale(1.7)" },
             }}
         >
             <Typography>{book.title}</Typography>
