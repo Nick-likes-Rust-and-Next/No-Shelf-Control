@@ -1,17 +1,22 @@
 import { useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
+import Wall from "./components/Wall/Wall";
 import Bookshelf from "./components/Bookshelf/Bookshelf";
-import BookList from "./components/BookList/BookList";
+import Navbar from "./components/Navbar/Navbar";
+import { Box } from "@mui/material";
 
 function App() {
-    const [count, setCount] = useState(0);
+  return (
 
-    return (
-        <>
-            <Navbar />
-            <Bookshelf />
-        </>
-    );
+      <Box  sx={{
+        backgroundImage: `url("/images/wallpaper.jpeg")`,
+        backgroundSize: "fill"
+      }}>
+        <Navbar />
+        <Wall />
+        <Bookshelf />
+      </Box>
+
+  );
 }
 
 export default App;
