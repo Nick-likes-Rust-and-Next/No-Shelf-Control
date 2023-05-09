@@ -17,13 +17,16 @@
         align-items: center;
 
         button {
-            position: absolute;
-            right: 100px;
-            top: 35px;
-            background: #777;
-            padding: 5px 15px;
-            border-radius: 5px;
+            background: #0ec97b;
+            padding: 10px 20px;
+            border-radius: 10px;
             color: white;
+
+            button:hover {
+                background: white;
+                color: #0ec97b;
+                cursor: pointer;
+            }
         }
     }
 }
