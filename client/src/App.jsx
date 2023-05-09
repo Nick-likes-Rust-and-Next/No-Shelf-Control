@@ -5,11 +5,38 @@ import Dashboard from "./pages/Dashboard/dashboard";
 import Homepage from "./pages/Homepage/homepage";
 import Login from "./pages/Login/login";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { QueryClient, QueryClientProvider } from "react-query";
 
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
+const httpLink = createHttpLink({
 
-const queryClient = new QueryClient();
+  uri: '/graphql'
+});
+
+const authLink = setContext((_, { headers }) => {
+
+  const token = sessionStorage.getItem('id_token')
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
+
+const client = new ApolloClient({
+
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
+
 function App() {
   const [mode, setMode] = useState(true);
   const theme = createTheme({
@@ -26,7 +53,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
+        <ApolloProvider client={client}>
           <Routes>
             <Route path="/" element={<Layout themeSwitch={changeTheme}/>}>
               <Route index element={<Homepage />}/>
@@ -38,7 +65,7 @@ function App() {
               <Route index element={<Dashboard />} />
             </Route>
           </Routes>
-        </QueryClientProvider>
+        </ApolloProvider>
       </ThemeProvider>
     </>
   );
