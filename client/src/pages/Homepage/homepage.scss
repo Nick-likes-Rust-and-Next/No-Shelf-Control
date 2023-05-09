@@ -69,3 +69,62 @@
         }
     }
 }
+
+$breakpoint-tablet: 768px;
+$breakpoint-phone: 425px;
+
+@media (max-width: $breakpoint-tablet) {
+    .homepage-page {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        margin-right: 70px;
+
+        .smaller-card-container {
+            display: flex;
+            flex-direction: column;
+
+            .popular-badges {
+                width: 80vw;
+            }
+
+            .popular-genres {
+                width: 80vw;
+            }
+
+            .twitter-feed {
+                display: flex;
+                width: 40vw;
+                position: relative;
+                left: 20vw;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-phone) {
+    .homepage-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .popular-books-container {
+            width: 80vw;
+        }
+
+        .smaller-card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .popular-badges {
+                width: 80vw;
+            }
+
+            .twitter-feed {
+                margin-right: 170px;
+                width: 80vw;
+            }
+        }
+    }
+}
