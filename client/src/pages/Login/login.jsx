@@ -4,7 +4,7 @@ import './login.scss';
 
 function Login() {
   return (
-    <div className='page'>
+    <div className='login-page'>
         <div className='login-container'>
             <form className='login-form' action='/api/user/id' method='post'>
                 <TextField
