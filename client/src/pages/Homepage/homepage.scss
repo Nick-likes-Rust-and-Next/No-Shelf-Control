@@ -1,0 +1,62 @@
+.homepage-page {
+    display: flex;
+    flex-direction: column;
+    
+    .logo-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .popular-books-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid black;
+        background: linear-gradient(180deg, red, white);
+        
+    }
+
+    .smaller-card-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 20px;
+
+        .popular-badges {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            width: 25vw;
+            background: linear-gradient(180deg, blue, white);
+
+            h4 {
+                margin-left: 10px;
+            }
+        }
+
+        .popular-genres {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            width: 25vw;
+            background: linear-gradient(180deg, green, white);
+            h4 {
+                margin-left: 10px;
+            }
+        }
+
+        .twitter-feed {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25vw;
+
+            h4 {
+                margin-left: 10px;
+                justify-content: center;
+            }
+        }
+    }
+}
