@@ -45,11 +45,12 @@ function Homepage() {
             <Timeline
               dataSource={{
                 sourceType: 'profile',
-                screenName: 'dallasmavs'
+                screenName: 'twitterbooks'
               }}
               options={{
                 width: '300',
-                height: '600'
+                height: '600',
+                borderRadius: '10px',
               }}
             />
         </div>

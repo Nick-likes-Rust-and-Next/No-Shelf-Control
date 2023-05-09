@@ -5,6 +5,7 @@
     .logo-container {
         display: flex;
         justify-content: center;
+        
     }
 
     .popular-books-container {
@@ -13,7 +14,8 @@
         align-items: center;
         border: 1px solid black;
         background: linear-gradient(180deg, red, white);
-        
+        border-radius: 10px;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     }
 
     .smaller-card-container {
@@ -29,6 +31,8 @@
             border: 1px solid black;
             width: 25vw;
             background: linear-gradient(180deg, blue, white);
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
             h4 {
                 margin-left: 10px;
@@ -42,6 +46,9 @@
             border: 1px solid black;
             width: 25vw;
             background: linear-gradient(180deg, green, white);
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
             h4 {
                 margin-left: 10px;
             }
@@ -52,6 +59,8 @@
             flex-direction: column;
             align-items: center;
             width: 25vw;
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
             h4 {
                 margin-left: 10px;
