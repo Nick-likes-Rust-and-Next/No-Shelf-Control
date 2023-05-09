@@ -5,17 +5,17 @@ import "./Navbar.scss";
 import Switch from "@mui/material/Switch";
 
 function Navbar(props) {
-  let isLoggedIn = true;
+  let isLoggedIn = false;
 
   function LoginButton({ isLoggedIn }) {
     return isLoggedIn ? (
-      <form action="/" method="post">
+      <NavLink to='/'>
         <button>Logout</button>
-      </form>
+      </NavLink>
     ) : (
-      <form action="/" method="post">
+      <NavLink to='/login'>
         <button>Login</button>
-      </form>
+      </NavLink>
     );
   }
   
@@ -27,10 +27,12 @@ function Navbar(props) {
         <img src="/images/NoShelfControl.png" alt="webpage banner" />
       </Link>
       <nav>
-        <Switch defaultChecked onClick={props.themeSwitch} />
-        <NavLink exact="true" activeclassname="active" to="/">
-          <LoginButton isLoggedIn={isLoggedIn} />
+        <NavLink to='/'>
+          <a>Home</a>
         </NavLink>
+        <Switch defaultChecked onClick={props.themeSwitch} />
+        <LoginButton isLoggedIn={isLoggedIn} />
+        
       </nav>
     </div>
   );
