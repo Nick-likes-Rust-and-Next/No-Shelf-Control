@@ -1,13 +1,23 @@
-import React from 'react'
+import React from 'react';
+import { TextField, Button } from '@mui/material';
+import './login.scss';
 
 function Login() {
   return (
     <div className='page'>
-        <div className='login-form-container'>
-            <form action='/api/user/id' method='post'>
-                <input type='email' placeholder='Enter Email' name='email' required/>
-                <input type='password' placeholder='Enter Password' name='password' required/>
-                <button type='submit'>Login</button>
+        <div className='login-container'>
+            <form className='login-form' action='/api/user/id' method='post'>
+                <TextField
+                    required
+                    type='email'
+                    id='email-required'
+                    placeholder='Enter Email' />
+                <TextField
+                    required
+                    type='password'
+                    id='password-required'
+                    placeholder='Enter Password' />
+                <Button variant='outlined'>Submit</Button>
             </form>
         </div>
     </div>
