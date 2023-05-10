@@ -1,5 +1,7 @@
 import { Box } from "@mui/material";
 
+// is this dead content?
+
 function Corkboard() {
   return (
     <Box sx={{ width: 365, height: 213, transition: "all .2s ease-in-out",

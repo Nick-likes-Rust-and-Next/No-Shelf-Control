@@ -28,7 +28,6 @@
             display: flex;
             flex-direction: row;
             margin-top: 50px;
-            
 
             .badges-container {
                 width: 45%;
@@ -38,7 +37,7 @@
                     font-size: 40px;
                     margin-right: 5px;
                 }
-            }            
+            }
         }
     }
 
@@ -46,6 +45,16 @@
         background: #888;
         width: 48%;
         margin: 20px 1% 0 0;
+
+        .heading {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bookButton {
+            max-height: 40px;
+            margin: 25px;
+        }
 
         h1 {
             margin-left: 25px;
@@ -73,7 +82,6 @@ $breakpoint-phone: 425px;
 }
 
 @media (max-width: $breakpoint-phone) {
-    
     .dashboard-container {
         display: flex;
         flex-direction: column;
@@ -88,7 +96,7 @@ $breakpoint-phone: 425px;
             text-align: center;
             justify-content: center;
             margin: 0;
-    
+
             .row1 {
                 display: flex;
                 flex-direction: column;
@@ -96,7 +104,7 @@ $breakpoint-phone: 425px;
                 justify-content: center;
                 margin-top: 10px;
             }
-    
+
             .row2 {
                 display: flex;
                 flex-direction: column;
@@ -106,5 +114,4 @@ $breakpoint-phone: 425px;
             }
         }
     }
-    
 }
