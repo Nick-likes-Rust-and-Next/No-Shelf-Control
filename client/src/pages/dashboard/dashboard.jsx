@@ -23,6 +23,10 @@ function Dashboard() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
+
+
+
   // Placeholder content for the starred books that user will choose to feature from their collection
   const starredBooks = ["book1", "book2", "book3", "book4"];
 
