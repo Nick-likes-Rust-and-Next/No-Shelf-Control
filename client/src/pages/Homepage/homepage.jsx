@@ -23,7 +23,7 @@ function Homepage() {
         </Button>
       </div>
       <div className='logo-container'>
-        <img src='/images/NoShelfControl.png'/>
+        <img src='/images/NSClogo.png'/>
       </div>
       <div className='popular-books-container'>
         <h3>Popular Books</h3>
