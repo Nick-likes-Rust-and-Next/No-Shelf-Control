@@ -16,7 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Home from '@mui/icons-material/Home'
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import Dashboard from '@mui/icons-material/Dashboard';
 import Login from '@mui/icons-material/Login';
 import './Navbar.scss';
@@ -70,22 +70,10 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  let isLoggedIn = false;
 
-  function LoginButton({ isLoggedIn }) {
-    return isLoggedIn ? (
-      <IconButton
-        size="large"
-        edge="end"
-        aria-label="account of current user"
-        aria-controls={menuId}
-        aria-haspopup="true"
-        onClick={handleProfileMenuOpen}
-        color="inherit"
-      >
-        <AccountCircle />
-      </IconButton>
-    ) : (
+  function LoginButton() {
+    if (sessionStorage.getItem('id_token') === null) {
+      return (
       <IconButton
         size='large'
         color='inherit'
@@ -93,7 +81,21 @@ export default function PrimarySearchAppBar() {
       >
         <Login />
       </IconButton>
-    );
+    )} else {
+      return (
+        <IconButton
+          size="large"
+          edge="end"
+          aria-label="account of current user"
+          aria-controls={menuId}
+          aria-haspopup="true"
+          onClick={handleProfileMenuOpen}
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+      )
+    }
   };
 
   let navigate = useNavigate();
@@ -124,6 +126,13 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleLogout = () => {
+    sessionStorage.clear();
+    window.location.replace('/');
+
+    handleMenuClose();
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -142,7 +151,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -236,18 +245,7 @@ export default function PrimarySearchAppBar() {
             >
               <Dashboard />
             </IconButton>
-            {/* <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> */}
-            {LoginButton(isLoggedIn)}
+            {LoginButton()}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
