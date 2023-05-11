@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage/homepage";
 import Login from "./pages/Login/login";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "react-query";
+import CreateAccount from "./pages/CreateAccount/createaccount";
 
 const queryClient = new QueryClient();
 function App() {
@@ -43,6 +44,12 @@ function App() {
                             element={<Layout themeSwitch={changeTheme} />}
                         >
                             <Route index element={<Dashboard />} />
+                        </Route>
+                        <Route
+                            path="/createaccount"
+                            element={<Layout themeSwitch={changeTheme} />}
+                        >
+                            <Route index element={<CreateAccount />} />
                         </Route>
                     </Routes>
                 </QueryClientProvider>

@@ -17,7 +17,7 @@ function Login() {
                     type='password'
                     id='password-required'
                     placeholder='Enter Password' />
-                <Button variant='outlined'>Submit</Button>
+                <Button variant='outlined' type='submit'>Submit</Button>
             </form>
         </div>
     </div>

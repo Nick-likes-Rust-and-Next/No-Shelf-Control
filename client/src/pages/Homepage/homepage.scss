@@ -1,6 +1,11 @@
 .homepage-page {
     display: flex;
     flex-direction: column;
+
+    .buttons-container {
+        position: relative;
+        right: 100px;
+    }
     
     .logo-container {
         display: flex;
