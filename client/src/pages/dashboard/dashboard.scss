@@ -4,41 +4,13 @@
     gap: 2%;
 
     .profile-container {
-        background: #999;
+        background: lightgrey;
         display: flex;
         width: 48%;
-        flex-direction: column;
+        flex-direction: row;
         margin: 20px 0 0 1%;
         text-decoration: none;
         color: black;
-
-        .row1 {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-            .profile-picture-container {
-                width: 45%;
-                height: 150px;
-                margin: 25px 0 0 25px;
-            }
-        }
-
-        .row2 {
-            display: flex;
-            flex-direction: row;
-            margin-top: 50px;
-
-            .badges-container {
-                width: 45%;
-                margin: 25px 0 0 25px;
-
-                #faBacon {
-                    font-size: 40px;
-                    margin-right: 5px;
-                }
-            }
-        }
     }
 
     .bookshelf-container {
