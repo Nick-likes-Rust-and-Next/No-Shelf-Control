@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, Button, TextField } from "@mui/material";
 
 const books = [];
 
@@ -21,6 +21,21 @@ const style = {
 };
 
 function AddBook({ open, onClose }) {
+
+    const handleFormSubmit = (e, onClose) => {
+        e.preventDefault();
+
+        try {
+            // add mutation here
+
+        } catch (err) {
+            console.log(err);
+        }
+
+        // not working, needs to close modal when form is submitted
+        onClose={onClose};
+    }
+
     return (
         <div>
             <Modal
@@ -39,19 +54,22 @@ function AddBook({ open, onClose }) {
                 <Fade in={open}>
                     <Box sx={style}>
                         Enter a book title:
-                        {/* <Autocomplete
-                            id="book-search"
-                            freeSolo
-                            options={books.map((option) => option.title)}
-                            renderInput={(params) => (
-                                <TextField {...params} label="Book Title" />
-                            )}
-                        /> */}
-                        <TextField
-                            id="outlined-basic"
-                            label="Book Title"
-                            variant="outlined"
-                        />
+                        <form onSubmit={handleFormSubmit}>
+                            {/* <Autocomplete
+                                id="book-search"
+                                freeSolo
+                                options={books.map((option) => option.title)}
+                                renderInput={(params) => (
+                                    <TextField {...params} label="Book Title" />
+                                )}
+                            /> */}
+                            <TextField
+                                id="outlined-basic"
+                                label="Book Title"
+                                variant="outlined"
+                            />
+                            <Button type='submit' variant="outlined">Add Book</Button>
+                        </form>
                     </Box>
                 </Fade>
             </Modal>
