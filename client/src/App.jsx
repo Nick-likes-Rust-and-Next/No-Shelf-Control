@@ -5,10 +5,40 @@ import Dashboard from "./pages/Dashboard/dashboard";
 import Homepage from "./pages/Homepage/homepage";
 import Login from "./pages/Login/login";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { QueryClient, QueryClientProvider } from "react-query";
+import CreateAccount from "./pages/CreateAccount/createaccount";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+
+  uri: '/graphql'
+});
+
+const authLink = setContext((_, { headers }) => {
+
+  const token = sessionStorage.getItem('id_token')
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
+
+const client = new ApolloClient({
+
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
 import CreateAccount from "./pages/CreateAccount/createaccount";
 
-const queryClient = new QueryClient();
 function App() {
     const [mode, setMode] = useState(true);
     const theme = createTheme({
@@ -22,10 +52,11 @@ function App() {
         console.log(theme);
     };
 
+
     return (
         <>
             <ThemeProvider theme={theme}>
-                <QueryClientProvider client={queryClient}>
+              <ApolloProvider client={client}>
                     <Routes>
                         <Route
                             path="/"
@@ -39,11 +70,12 @@ function App() {
                         >
                             <Route index element={<Login />} />
                         </Route>
-                        <Route
-                            path="/dashboard"
-                            element={<Layout themeSwitch={changeTheme} />}
-                        >
-                            <Route index element={<Dashboard />} />
+                        <Route path="/dashboard" element={<Layout themeSwitch={changeTheme} />}>
+                          <Route index element={
+                            <ProtectedRoute>
+                              <Dashboard />
+                            </ProtectedRoute>
+                          } />
                         </Route>
                         <Route
                             path="/createaccount"
@@ -52,10 +84,11 @@ function App() {
                             <Route index element={<CreateAccount />} />
                         </Route>
                     </Routes>
-                </QueryClientProvider>
+                </ApolloProvider>
             </ThemeProvider>
         </>
     );
+
 }
 
 export default App;
