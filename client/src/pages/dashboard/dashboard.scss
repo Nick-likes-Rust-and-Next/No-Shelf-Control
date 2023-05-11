@@ -1,13 +1,17 @@
+@import url('https://fonts.cdnfonts.com/css/bukhari-script');
+
+* {
+    font-family: "Bukhari Script", sans-serif;
+}
+
 .dashboard-container {
     display: flex;
     width: 100vw;
     gap: 2%;
 
     .profile-container {
-        background: lightgrey;
-        display: flex;
+        background: #00aeef;
         width: 48%;
-        flex-direction: row;
         margin: 20px 0 0 1%;
         text-decoration: none;
         color: black;

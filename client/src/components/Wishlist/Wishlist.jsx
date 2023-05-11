@@ -10,16 +10,24 @@ import { ExpandMore, Star } from "@mui/icons-material/";
 
 function Wishlist() {
   return (
-    <Grid2 lg={12}>
-      <Accordion sx={{ bgcolor: "whitesmoke" }}>
+    <Grid2 xs={12}>
+      <Accordion sx={{ bgcolor: "#aaaaaa" }}>
         <AccordionSummary
           expandIcon={<ExpandMore />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography variant="h4" align="center" fontWeight={600} padding={2}>
+          <Typography
+            variant="h4"
+            align="center"
+            fontWeight={600}
+            padding={2}
+            color="white"
+            fontFamily={"Bukhari Script"}
+            fontSize={40}
+          >
             Wishlist
-            <Star sx={{ mx: 2, color: "gold" }}/>
+            <Star sx={{ mx: 2, color: "gold" }} />
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
