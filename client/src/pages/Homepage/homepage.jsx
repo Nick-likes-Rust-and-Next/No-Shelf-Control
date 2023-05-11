@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBacon } from '@fortawesome/free-solid-svg-icons';
 import './homepage.scss';
 import { Timeline } from 'react-twitter-widgets';
+import { Button } from '@mui/material';
 
 
 function Homepage() {
@@ -13,6 +14,14 @@ function Homepage() {
 
   return (
     <div className='homepage-page'>
+      <div className='buttons-container'>
+        <Button
+          variant='outlined'
+          onClick={() => location.href = '/createaccount'}
+        >
+          Create Account
+        </Button>
+      </div>
       <div className='logo-container'>
         <img src='/images/NoShelfControl.png'/>
       </div>
