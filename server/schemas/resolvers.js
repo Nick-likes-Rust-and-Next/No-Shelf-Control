@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
+const { Book } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -16,11 +17,20 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    books: async () => {
+      return Book.find()
+    },
+    book: async (parent, { title }) => {
+      return Book.findOne({ title })
+    },
+    userBook: async (parent, { username }) => {
+      
+    }
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email, password, firstName, lastName }) => {
+      const user = await User.create({ username, email, password, firstName, lastName });
       const token = signToken(user);
       return { token, user };
     },
@@ -41,6 +51,12 @@ const resolvers = {
 
       return { token, user };
     },
+    addBook: async (parent, {title, subtitle, author, publishedDate, pageCount, description, image}) => {
+
+      const book = await Book.create({title, subtitle, author, publishedDate, pageCount, description, image});
+
+      return book;
+    }
   },
 };
 

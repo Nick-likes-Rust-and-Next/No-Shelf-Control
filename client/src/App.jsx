@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard/dashboard";
 import Homepage from "./pages/Homepage/homepage";
 import Login from "./pages/Login/login";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 
 import {
   ApolloClient,
@@ -55,15 +56,25 @@ function App() {
       <ThemeProvider theme={theme}>
         <ApolloProvider client={client}>
           <Routes>
-            <Route path="/" element={<Layout themeSwitch={changeTheme}/>}>
-              <Route index element={<Homepage />}/>
-            </Route>
+
             <Route path="/login" element={<Layout themeSwitch={changeTheme} />}>
               <Route index element={<Login />}/>
             </Route>
-            <Route path="/dashboard" element={<Layout themeSwitch={changeTheme} />}>
-              <Route index element={<Dashboard />} />
-            </Route>
+
+           
+              <Route path="/" element={<Layout themeSwitch={changeTheme}/>}>
+                <Route index element={<Homepage />}/>
+              </Route>
+
+              <Route path="/dashboard" element={<Layout themeSwitch={changeTheme} />}>
+                <Route index element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                } />
+              </Route>
+            
+
           </Routes>
         </ApolloProvider>
       </ThemeProvider>

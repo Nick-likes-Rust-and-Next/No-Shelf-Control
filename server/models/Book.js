@@ -17,11 +17,18 @@ const bookSchema = new Schema(
       trim: true,
     },
     publishedDate: {
-      type: Number,
+      type: String,
     },
     pageCount: {
       type: Number,
-    }
+    },
+    description: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
+    users: []
   },
   {
     toJSON: {
