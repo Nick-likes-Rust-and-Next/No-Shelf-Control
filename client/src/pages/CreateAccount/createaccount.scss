@@ -1,0 +1,16 @@
+.createaccount-page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 150px;
+
+    .createaccount-field-container {
+        display: flex;
+        flex-direction: column;
+        
+
+        .createaccount-form {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

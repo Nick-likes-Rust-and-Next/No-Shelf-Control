@@ -1,45 +1,16 @@
 .dashboard-container {
     display: flex;
-    width: 100%;
+    width: 100vw;
     gap: 2%;
 
     .profile-container {
-        background: #999;
+        background: lightgrey;
         display: flex;
         width: 48%;
-        flex-direction: column;
+        flex-direction: row;
         margin: 20px 0 0 1%;
         text-decoration: none;
         color: black;
-
-        .row1 {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-            .profile-picture-container {
-                width: 45%;
-                height: 150px;
-                margin: 25px 0 0 25px;
-            }
-        }
-
-        .row2 {
-            display: flex;
-            flex-direction: row;
-            margin-top: 50px;
-            
-
-            .badges-container {
-                width: 45%;
-                margin: 25px 0 0 25px;
-
-                #faBacon {
-                    font-size: 40px;
-                    margin-right: 5px;
-                }
-            }            
-        }
     }
 
     .bookshelf-container {
@@ -47,9 +18,72 @@
         width: 48%;
         margin: 20px 1% 0 0;
 
+        .heading {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bookButton {
+            max-height: 40px;
+            margin: 25px;
+        }
+
         h1 {
             margin-left: 25px;
         }
     }
 }
 
+$breakpoint-tablet: 768px;
+$breakpoint-phone: 425px;
+@media (max-width: $breakpoint-tablet) {
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+
+        .profile-container {
+            width: 100vw;
+            margin: 0;
+        }
+
+        .bookshelf-container {
+            width: 100vw;
+            margin: 0;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-phone) {
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            margin: 0;
+
+            .row1 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .row2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+            }
+        }
+    }
+}
