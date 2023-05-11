@@ -1,0 +1,143 @@
+.homepage-page {
+    display: flex;
+    flex-direction: column;
+
+    .buttons-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+        
+    }
+
+    .popular-books-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid black;
+        background: linear-gradient(180deg, red, white);
+        border-radius: 10px;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    .smaller-card-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 20px;
+
+        .popular-badges {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            width: 25vw;
+            background: linear-gradient(180deg, blue, white);
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+            h4 {
+                margin-left: 10px;
+            }
+        }
+
+        .popular-genres {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid black;
+            width: 25vw;
+            background: linear-gradient(180deg, green, white);
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+            h4 {
+                margin-left: 10px;
+            }
+        }
+
+        .twitter-feed {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25vw;
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+            h4 {
+                margin-left: 10px;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+$breakpoint-tablet: 768px;
+$breakpoint-phone: 425px;
+
+@media (max-width: $breakpoint-tablet) {
+    .homepage-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 70px;
+
+        .logo-container img {
+            width: 350px;
+        }
+
+        .smaller-card-container {
+            display: flex;
+            flex-direction: column;
+
+            .popular-badges {
+                width: 80vw;
+            }
+
+            .popular-genres {
+                width: 80vw;
+            }
+
+            .twitter-feed {
+                display: flex;
+                width: 40vw;
+                position: relative;
+                left: 20vw;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-phone) {
+    .homepage-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .popular-books-container {
+            width: 80vw;
+        }
+
+        .smaller-card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .popular-badges {
+                width: 80vw;
+            }
+
+            .twitter-feed {
+                margin-right: 170px;
+                width: 80vw;
+            }
+        }
+    }
+}

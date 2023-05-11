@@ -1,0 +1,49 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.mySwiper {
+    display: flex;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 600px;
+    max-width: 100%;
+}
+
+.bookBox {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100px;
+    background-color: black;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.authorBox {
+    margin-bottom: 60px;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.bookTitle {
+    color: white;
+    font-size: 1.5rem !important;
+    user-select: none;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.bookAuthor {
+    color: black;
+    font-size: 1.2rem !important;
+    user-select: none;
+}

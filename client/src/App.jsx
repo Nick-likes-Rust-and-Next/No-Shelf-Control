@@ -2,46 +2,91 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout/layout";
 import Dashboard from "./pages/Dashboard/dashboard";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
-
 import Homepage from "./pages/Homepage/homepage";
+import Login from "./pages/Login/login";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CreateAccount from "./pages/CreateAccount/createaccount";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+
+  uri: '/graphql'
+});
+
+const authLink = setContext((_, { headers }) => {
+
+  const token = sessionStorage.getItem('id_token')
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    }
+  }
+});
+
+const client = new ApolloClient({
+
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
 
 function App() {
-  const [mode, setMode] = useState(true);
-  const theme = createTheme({
-    palette: {
-      mode: mode ? "light" : "dark",
-    },
-  });
+    const [mode, setMode] = useState(true);
+    const theme = createTheme({
+        palette: {
+            mode: mode ? "light" : "dark",
+        },
+    });
 
-  const changeTheme = () => {
-    setMode(!mode);
-    console.log(theme);
-  };
+    const changeTheme = () => {
+        setMode(!mode);
+        console.log(theme);
+    };
+    
+    return (
+        <>
+            <ThemeProvider theme={theme}>
+              <ApolloProvider client={client}>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<Layout themeSwitch={changeTheme} />}
+                        >
+                            <Route index element={<Homepage />} />
+                        </Route>
+                        <Route
+                            path="/login"
+                            element={<Layout themeSwitch={changeTheme} />}
+                        >
+                            <Route index element={<Login />} />
+                        </Route>
+                        <Route path="/dashboard" element={<Layout themeSwitch={changeTheme} />}>
+                          <Route index element={
+                            <ProtectedRoute>
+                              <Dashboard />
+                            </ProtectedRoute>
+                          } />
+                        </Route>
+                        <Route
+                            path="/createaccount"
+                            element={<Layout themeSwitch={changeTheme} />}
+                        >
+                            <Route index element={<CreateAccount />} />
+                        </Route>
+                    </Routes>
+                </ApolloProvider>
+            </ThemeProvider>
+        </>
+    );
 
-  return (
-    <>
-      <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          <Routes>
-            <Route path="/" element={<Layout themeSwitch={changeTheme} />}>
-              <Route index element={<Dashboard />} />
-            </Route>
-          </Routes>
-        </QueryClientProvider>
-        <Routes>
-          <Route path="/" element={<Layout themeSwitch={changeTheme}/>}>
-            <Route index element={<Homepage />}/>
-          </Route>
-          <Route path="/dashboard" element={<Layout themeSwitch={changeTheme} />}>
-            <Route index element={<Dashboard />} />
-          </Route>
-        </Routes>
-      </ThemeProvider>
-    </>
-  );
 }
 
 export default App;
