@@ -37,7 +37,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
-import CreateAccount from "./pages/CreateAccount/createaccount";
+
 
 function App() {
     const [mode, setMode] = useState(true);
