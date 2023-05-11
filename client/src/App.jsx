@@ -37,7 +37,6 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
-import CreateAccount from "./pages/CreateAccount/createaccount";
 
 function App() {
     const [mode, setMode] = useState(true);
@@ -51,8 +50,7 @@ function App() {
         setMode(!mode);
         console.log(theme);
     };
-
-
+    
     return (
         <>
             <ThemeProvider theme={theme}>
