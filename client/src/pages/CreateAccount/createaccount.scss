@@ -65,7 +65,28 @@
                 }
             }
         }
-    }
+    }  
+}
 
-    
+$breakpoint-tablet: 940px;
+$breakpoint-phone: 425px;
+
+@media (max-width: $breakpoint-tablet) {
+    .createaccount-page {
+        display: flex;
+        flex-direction: column;
+
+        .createaccount-container {
+            display: flex;
+            flex-direction: column;
+
+            .createaccount-image-container {
+                display: none;
+            }
+
+            .createaccount-form-container {
+                border-radius: 5px;
+            }
+        }
+    }
 }
