@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { Book } = require('../models');
 const { signToken } = require('../utils/auth');
+const { googleApi } = require('../utils/googleApi')
 
 const resolvers = {
   Query: {
@@ -21,10 +22,18 @@ const resolvers = {
       return Book.find()
     },
     book: async (parent, { title }) => {
-      return Book.findOne({ title })
+
+      if (Book.findOne({ title })) {
+
+        return Book.findOne({ title })
+      }
+
+      else {
+
+        googleApi(title)
+      }
     },
-    userBook: async (parent, { username }) => {
-      
+    userBook: async (parent, { username }) => { 
     }
   },
 
