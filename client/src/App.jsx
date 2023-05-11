@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout/layout";
-import Dashboard from "./pages/dashboard/dashboard";
+import Dashboard from "./pages/Dashboard/dashboard";
 import Homepage from "./pages/Homepage/homepage";
 import Login from "./pages/Login/login";
 import { ThemeProvider, createTheme } from "@mui/material/styles";

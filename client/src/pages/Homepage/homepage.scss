@@ -3,13 +3,15 @@
     flex-direction: column;
 
     .buttons-container {
-        position: relative;
-        right: 100px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
     }
     
     .logo-container {
         display: flex;
         justify-content: center;
+        margin-bottom: 100px;
         
     }
 
@@ -82,8 +84,14 @@ $breakpoint-phone: 425px;
     .homepage-page {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         margin-left: 10px;
         margin-right: 70px;
+
+        .logo-container img {
+            width: 350px;
+        }
 
         .smaller-card-container {
             display: flex;

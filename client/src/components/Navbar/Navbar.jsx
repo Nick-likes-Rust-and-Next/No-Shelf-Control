@@ -18,6 +18,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import Home from '@mui/icons-material/Home'
 import { useNavigate } from 'react-router-dom';
 import Dashboard from '@mui/icons-material/Dashboard';
+import Login from '@mui/icons-material/Login';
+import './Navbar.scss';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -63,9 +65,36 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  let isLoggedIn = false;
+
+  function LoginButton({ isLoggedIn }) {
+    return isLoggedIn ? (
+      <IconButton
+        size="large"
+        edge="end"
+        aria-label="account of current user"
+        aria-controls={menuId}
+        aria-haspopup="true"
+        onClick={handleProfileMenuOpen}
+        color="inherit"
+      >
+        <AccountCircle />
+      </IconButton>
+    ) : (
+      <IconButton
+        size='large'
+        color='inherit'
+        onClick={() => location.href = '/login'}
+      >
+        <Login />
+      </IconButton>
+    );
+  };
 
   let navigate = useNavigate();
   const homeChange = () => {
@@ -173,23 +202,15 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            No Shelf Control
-          </Typography>
+          <img 
+            style={{ 
+              width: '100px', 
+              cursor: 'pointer', 
+            }} 
+            src='/images/NSClogo.png' 
+            alt='books' 
+            onClick={() => location.href = '/'} 
+          />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -201,20 +222,6 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            {/* <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               size='large'
               color='inherit'
@@ -229,7 +236,7 @@ export default function PrimarySearchAppBar() {
             >
               <Dashboard />
             </IconButton>
-            <IconButton
+            {/* <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -239,7 +246,8 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
+            {LoginButton(isLoggedIn)}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -260,3 +268,8 @@ export default function PrimarySearchAppBar() {
     </Box>
   );
 }
+
+
+
+
+
