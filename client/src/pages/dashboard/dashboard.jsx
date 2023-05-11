@@ -180,7 +180,6 @@ function Dashboard() {
                 <img
                   src="/images/content.jpg"
                   height={240}
-                  weight={240}
                   style={{ borderRadius: 5 }}
                 />
             </Box>
@@ -199,6 +198,7 @@ function Dashboard() {
               {starredBooks.map((book) => (
                 // needs key
                 <Box
+                  key={book}
                   sx={{
                     borderRadius: 5,
                     height: 190,
@@ -214,7 +214,6 @@ function Dashboard() {
                   <img
                     src="/images/content.jpg"
                     height={200}
-                    weight={200}
                     style={{ borderRadius: 5 }}
                   />
                 </Box>

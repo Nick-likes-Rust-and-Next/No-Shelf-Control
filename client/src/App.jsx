@@ -38,7 +38,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-
 function App() {
     const [mode, setMode] = useState(true);
     const theme = createTheme({
@@ -51,8 +50,7 @@ function App() {
         setMode(!mode);
         console.log(theme);
     };
-
-
+    
     return (
         <>
             <ThemeProvider theme={theme}>
