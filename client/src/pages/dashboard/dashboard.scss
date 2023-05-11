@@ -21,6 +21,7 @@
         .heading {
             display: flex;
             justify-content: space-between;
+            user-select: none;
         }
 
         .bookButton {
