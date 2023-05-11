@@ -30,6 +30,7 @@
             align-items: center;
             height: 600px;
             background: linear-gradient(180deg, #047acf, #022bf5);
+            border: 1px solid black;
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
 
@@ -76,16 +77,22 @@ $breakpoint-phone: 425px;
 
         .login-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             margin-bottom: 100px;
+
+            .login-form-container {
+                border-radius: 5px;
+            }
 
             .login-image-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                
 
                 #login-image {
                     width: 250px;
+                    display: none;
                 }
             }
 
