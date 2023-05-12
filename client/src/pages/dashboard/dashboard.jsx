@@ -1,4 +1,14 @@
-import { Avatar, Box, Button, Typography, Tooltip, Card } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Typography,
+  Tooltip,
+  Paper,
+  Card,
+  CardActionArea,
+  useRadioGroup,
+} from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import "./dashboard.scss";
 import { faBacon, faBookOpen } from "@fortawesome/free-solid-svg-icons";
@@ -8,12 +18,14 @@ import React from "react";
 import AddBook from "../../components/AddBook/AddBook";
 import { Settings } from "@mui/icons-material/";
 import Wishlist from "../../components/Wishlist/Wishlist";
+import Auth from "../../utils/auth"
 
 function Dashboard() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const loggedIn = Auth.loggedIn();
+  const user = Auth.getProfile()?.data;
   // Placeholder content for the starred books that user will choose to feature from their collection
   const starredBooks = ["book1", "book2", "book3"];
 
@@ -42,7 +54,7 @@ function Dashboard() {
                   paddingLeft={2}
                   sx={{ alignSelf: "flex-end" }}
                 >
-                  Username
+                  {loggedIn ? user.username : "Username"}
                 </Typography>
               </Grid2>
               <Grid2>
