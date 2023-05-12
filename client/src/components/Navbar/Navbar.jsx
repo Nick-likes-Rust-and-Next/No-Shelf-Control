@@ -212,10 +212,7 @@ export default function PrimarySearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <img 
-            style={{ 
-              width: '100px', 
-              cursor: 'pointer', 
-            }} 
+            id='navbar-logo' 
             src='/images/NSClogo.png' 
             alt='books' 
             onClick={() => location.href = '/'} 

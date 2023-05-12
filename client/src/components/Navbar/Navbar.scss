@@ -1,0 +1,12 @@
+#navbar-logo {
+    width: 100px;
+}
+
+$breakpoint-tablet: 940px;
+
+@media (max-width: $breakpoint-tablet) {
+    #navbar-logo {
+        width: 60px;
+        margin-right: 10px;
+    }
+}

@@ -28,7 +28,6 @@ const bookSchema = new Schema(
     image: {
       type: String,
     },
-    users: []
   },
   {
     toJSON: {

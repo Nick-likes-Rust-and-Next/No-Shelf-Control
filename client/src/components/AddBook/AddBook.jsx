@@ -5,8 +5,8 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { Autocomplete, Button, TextField } from "@mui/material";
-import { useQuery  } from "@apollo/client";
-import { QUERY_BOOK } from "../../utils/queries";
+import { QUERY_BOOK, QUERY_BOOKS } from "../../utils/queries";
+import { useLazyQuery } from "@apollo/client";
 
 const books = [];
 
@@ -21,33 +21,26 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-
 function AddBook({ open, onClose }) {
-
-    const [title, setTitle] = useState('')
+    const [bookTitle, setTitle] = React.useState("");
+    const [getBook, { loading, error, data }] = useLazyQuery(QUERY_BOOK);
 
     const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
+        console.log(bookTitle);
 
-        const [addBook, { error, data }] = useQuery(QUERY_BOOK)
-
-        try {
-            // add mutation here
-            const mutationResponse = await addBook({
-                variables: {
-                    title
-                }
-            })
-
-            console.log(mutationResponse)
-
-        } catch (err) {
-            console.log(err);
+       const {data} = await getBook({ variables: { title: bookTitle } });
+        if (loading) {
+            console.log("loading");
         }
-
-        // not working, needs to close modal when form is submitted
-        // onClose={onClose};
-    }
+        if (error) {
+            console.log(error);
+        }
+        if (data) {
+            console.log(data);
+        }
+        // add mutation to add the book to the users list of books
+    };
 
     return (
         <div>
@@ -77,13 +70,19 @@ function AddBook({ open, onClose }) {
                                 )}
                             /> */}
                             <TextField
-                                onChange={(e) => setTitle(e.target.value)}
-                                value={title}
+                                onChange={(e) => {
+                                    console.log(e.target.value)
+                                    setTitle(e.target.value)
+                                    console.log(bookTitle)
+                                }}
+                                value={bookTitle}
                                 id="outlined-basic"
                                 label="Book Title"
                                 variant="outlined"
                             />
-                            <Button type='submit' variant="outlined">Add Book</Button>
+                            <Button type="submit" variant="outlined">
+                                Add Book
+                            </Button>
                         </form>
                     </Box>
                 </Fade>

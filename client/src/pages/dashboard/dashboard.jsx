@@ -24,104 +24,60 @@ function Dashboard() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const loggedIn = Auth.loggedIn();
   const user = Auth.getProfile()?.data;
-
-  console.log(user)
-
-
-
-
   // Placeholder content for the starred books that user will choose to feature from their collection
-  const starredBooks = ["book1", "book2", "book3", "book4"];
+  const starredBooks = ["book1", "book2", "book3"];
 
   return (
     <div className="container dashboard-container">
-      <Grid2 container spacing={4} className="profile-container">
-        {/* Profile pic and badges */}
-        <Grid2 xs={4} sx={{ bgcolor: "grey" }}>
-          <Card sx={{ bgcolor: "whitesmoke" }}>
-            <Box
-              sx={{
-                padding: 5,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar
-                alt="profile picture"
-                src=""
-                sx={{ bgcolor: "red", width: 100, height: 100 }}
-              ></Avatar>
-
-              <Typography
-                align="center"
-                variant="h6"
-                color="black"
-                fontWeight={600}
-                padding={3}
-              >
-                {loggedIn ? user.username : "Username"} 
-              </Typography>
-              <Settings
-                sx={{
-                  marginBottom: 2,
-                  fontSize: 30,
-                  transition: "all .3s ease-in-out",
-                  "&:hover": {
-                    transform: "scale(1.5)",
-                    cursor: "grab",
-                  },
-                  alignSelf: "center",
-                }}
-              />
+      <Grid2 container spacing={5} className="profile-container" justifyContent={"center"}>
+        <Grid2 xs={12}>
+          <Card sx={{ bgcolor: "#99d9ea", borderRadius: 5 }}>
+            <Box display="flex" flexWrap={"wrap"}>
+              <Box padding={2}>
+                <Avatar
+                  alt="profile picture"
+                  src=""
+                  sx={{ bgcolor: "#ff00ff", width: 75, height: 75 }}
+                ></Avatar>
+              </Box>
+              <Grid2 md={8} justifySelf={"flex-end"}>
+                <Typography
+                  align="center"
+                  variant="h5"
+                  fontWeight={600}
+                  color="black"
+                  fontFamily={"Bukhari Script"}
+                  fontSize={27}
+                  padding={3}
+                  paddingLeft={2}
+                  sx={{ alignSelf: "flex-end" }}
+                >
+                  {loggedIn ? user.username : "Username"}
+                </Typography>
+              </Grid2>
+              <Grid2>
+                <Settings
+                  sx={{
+                    fontSize: 30,
+                    color: "#707070",
+                    transition: "all .3s ease-in-out",
+                    "&:hover": {
+                      transform: "scale(1.5)",
+                      cursor: "grab",
+                    },
+                  }}
+                />
+              </Grid2>
             </Box>
-          </Card>
-          <Box display={"flex"} flexDirection={"column"} flexWrap={"wrap"}>
+
             <Box
               display={"flex"}
-              flexDirection={"column"}
-              alignContent={"space-between"}
+              justifyContent={"space-evenly"}
+              flexWrap={"wrap"}
             >
-              <Typography
-                align="center"
-                variant="h6"
-                color="black"
-                fontWeight={600}
-                padding={3}
-              >
-                Badges
-              </Typography>
-              <Paper
-                elevation={24}
-                sx={{
-                  height: 400,
-                  bgcolor: "whitesmoke",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                <Tooltip title="Bacon Badge!">
-                  <FontAwesomeIcon
-                    id="faBacon"
-                    icon={faBacon}
-                    color="black"
-                    fontSize={40}
-                    style={{ padding: 15 }}
-                  />
-                </Tooltip>
-                <Tooltip title="Currently reading a new Book!">
-                  <FontAwesomeIcon
-                    id="faBacon"
-                    icon={faBookOpen}
-                    color="black"
-                    fontSize={40}
-                    style={{ padding: 10 }}
-                  />
-                </Tooltip>
+              <Tooltip title="Bacon Badge!">
                 <FontAwesomeIcon
                   id="faBacon"
                   icon={faBacon}
@@ -129,6 +85,8 @@ function Dashboard() {
                   fontSize={40}
                   style={{ padding: 10 }}
                 />
+              </Tooltip>
+              <Tooltip title="Currently reading a new Book!">
                 <FontAwesomeIcon
                   id="faBacon"
                   icon={faBookOpen}
@@ -136,45 +94,113 @@ function Dashboard() {
                   fontSize={40}
                   style={{ padding: 10 }}
                 />
-                <FontAwesomeIcon
-                  id="faBacon"
-                  icon={faBookOpen}
-                  color="black"
-                  fontSize={40}
-                  style={{ padding: 10 }}
-                />
-                <FontAwesomeIcon
-                  id="faBacon"
-                  icon={faBookOpen}
-                  color="black"
-                  fontSize={40}
-                  style={{ padding: 10 }}
-                />
-                <FontAwesomeIcon
-                  id="faBacon"
-                  icon={faBookOpen}
-                  color="black"
-                  fontSize={40}
-                  style={{ padding: 10 }}
-                />
-              </Paper>
+              </Tooltip>
+              <FontAwesomeIcon
+                id="faBacon"
+                icon={faBacon}
+                color="black"
+                fontSize={40}
+                style={{ padding: 10 }}
+              />
+              <FontAwesomeIcon
+                id="faBacon"
+                icon={faBookOpen}
+                color="black"
+                fontSize={40}
+                style={{ padding: 10 }}
+              />
+              <FontAwesomeIcon
+                id="faBacon"
+                icon={faBookOpen}
+                color="black"
+                fontSize={40}
+                style={{ padding: 10 }}
+              />
+              <FontAwesomeIcon
+                id="faBacon"
+                icon={faBookOpen}
+                color="black"
+                fontSize={40}
+                style={{ padding: 10 }}
+              />
+              <FontAwesomeIcon
+                id="faBacon"
+                icon={faBookOpen}
+                color="black"
+                fontSize={40}
+                style={{ padding: 10 }}
+              />
             </Box>
-          </Box>
+          </Card>
         </Grid2>
-        {/* Currently reading and featured books */}
-        <Grid2 xs={8} sx={{ bgcolor: "silver" }}>
-          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center" }}>
+
+        <Grid2
+          xs={8}
+          md={4}
+        >
+          <Card sx={{ bgcolor: "#707070", borderRadius: 5, padding: 2}}>
+          <Box
+            display={"flex"}
+            flexDirection={"column"}
+            alignContent={"center"}
+            alignItems={"center"}
+            flexWrap={"wrap"}
+          >
             <Typography
               variant="h5"
               align="center"
               padding={2}
               fontWeight={600}
               fontSize={25}
-              sx={{ wordWrap: "normal" }}
+              color="white"
+              fontFamily={"Bukhari Script"}
             >
-              Currently <br /> Reading
+              Currently Reading
             </Typography>
+            <Box
+              sx={{
+                borderRadius: 5,
+                height: 190,
+                transition: "all .3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-15px)",
+                  boxShadow: "0px 8px 10px black",
+                },
+
+                margin: 1.5,
+              }}
+            >
+              <img
+                src="/images/content.jpg"
+                height={200}
+                style={{ borderRadius: 5 }}
+              />
+            </Box>
+            
+          </Box>
+          </Card>
+        </Grid2>
+        <Grid2 xs={8}>
+        <Card sx={{ bgcolor: "#707070", borderRadius: 5, padding: 1.5}}>
+          <Typography
+            variant="h4"
+            align="center"
+            padding={2}
+            fontWeight={600}
+            color="white"
+            fontFamily={"Bukhari Script"}
+          >
+            Favorite Books
+          </Typography>
+          <Box
+            display={"flex"}
+            flexWrap={"wrap"}
+            justifyContent={"space-evenly"}
+          >
+            {starredBooks.map((book) => (
+              // needs key
               <Box
+                key={book}
                 sx={{
                   borderRadius: 5,
                   height: 190,
@@ -189,48 +215,15 @@ function Dashboard() {
               >
                 <img
                   src="/images/content.jpg"
-                  height={240}
+                  height={200}
                   style={{ borderRadius: 5 }}
                 />
-            </Box>
+              </Box>
+            ))}
           </Box>
-
-          <Box paddingTop={8}>
-            <Typography
-              variant="h5"
-              align="center"
-              padding={2}
-              fontWeight={600}
-            >
-              Featured Books
-            </Typography>
-            <Box display={"flex"} flexWrap={"wrap"} justifyContent={"center"}>
-              {starredBooks.map((book) => (
-                // needs key
-                <Box
-                  key={book}
-                  sx={{
-                    borderRadius: 5,
-                    height: 190,
-                    transition: "all .3s ease-in-out",
-                    "&:hover": {
-                      transform: "translateY(-15px)",
-                      boxShadow: "0px 8px 10px black",
-                    },
-
-                    margin: 1.5,
-                  }}
-                >
-                  <img
-                    src="/images/content.jpg"
-                    height={200}
-                    style={{ borderRadius: 5 }}
-                  />
-                </Box>
-              ))}
-            </Box>
-          </Box>
+          </Card>
         </Grid2>
+
         <Wishlist />
       </Grid2>
 
