@@ -1,11 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Typography,
-  Tooltip,
-  Card,
-} from "@mui/material";
+import { Avatar, Box, Button, Typography, Tooltip, Card } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import "./dashboard.scss";
 import { faBacon, faBookOpen } from "@fortawesome/free-solid-svg-icons";
@@ -21,16 +14,12 @@ function Dashboard() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
-
-
-
   // Placeholder content for the starred books that user will choose to feature from their collection
   const starredBooks = ["book1", "book2", "book3"];
 
   return (
     <div className="container dashboard-container">
-      <Grid2 container spacing={5} className="profile-container">
+      <Grid2 container spacing={5} className="profile-container" justifyContent={"center"}>
         <Grid2 xs={12}>
           <Card sx={{ bgcolor: "#99d9ea", borderRadius: 5 }}>
             <Box display="flex" flexWrap={"wrap"}>
@@ -41,7 +30,7 @@ function Dashboard() {
                   sx={{ bgcolor: "#ff00ff", width: 75, height: 75 }}
                 ></Avatar>
               </Box>
-              <Grid2 md={8} justifySelf={"flex-start"}>
+              <Grid2 md={8} justifySelf={"flex-end"}>
                 <Typography
                   align="center"
                   variant="h5"
@@ -132,15 +121,12 @@ function Dashboard() {
             </Box>
           </Card>
         </Grid2>
+
         <Grid2
-          xs={3}
-          sx={{
-            bgcolor: "#707070",
-            marginLeft: 2.4,
-            marginRight: 3,
-            borderRadius: 5,
-          }}
+          xs={8}
+          md={4}
         >
+          <Card sx={{ bgcolor: "#707070", borderRadius: 5, padding: 2}}>
           <Box
             display={"flex"}
             flexDirection={"column"}
@@ -149,14 +135,13 @@ function Dashboard() {
             flexWrap={"wrap"}
           >
             <Typography
-              variant="h4"
+              variant="h5"
               align="center"
               padding={2}
               fontWeight={600}
               fontSize={25}
               color="white"
               fontFamily={"Bukhari Script"}
-              sx={{ wordWrap: "normal" }}
             >
               Currently Reading
             </Typography>
@@ -173,15 +158,18 @@ function Dashboard() {
                 margin: 1.5,
               }}
             >
-                <img
-                  src="/images/content.jpg"
-                  height={200}
-                  style={{ borderRadius: 5 }}
-                />
+              <img
+                src="/images/content.jpg"
+                height={200}
+                style={{ borderRadius: 5 }}
+              />
             </Box>
+            
           </Box>
+          </Card>
         </Grid2>
-        <Grid2 xs={8} sx={{ bgcolor: "#707070", borderRadius: 5 }}>
+        <Grid2 xs={8}>
+        <Card sx={{ bgcolor: "#707070", borderRadius: 5, padding: 1.5}}>
           <Typography
             variant="h4"
             align="center"
@@ -221,7 +209,9 @@ function Dashboard() {
               </Box>
             ))}
           </Box>
+          </Card>
         </Grid2>
+
         <Wishlist />
       </Grid2>
 
