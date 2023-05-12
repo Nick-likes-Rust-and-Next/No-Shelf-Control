@@ -5,8 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { Autocomplete, Button, TextField } from "@mui/material";
-import { useQuery } from "@apollo/client";
-import { QUERY_BOOK } from "../../utils/queries";
+import { QUERY_BOOK, QUERY_BOOKS } from "../../utils/queries";
 import { useLazyQuery } from "@apollo/client";
 
 const books = [];
@@ -28,8 +27,9 @@ function AddBook({ open, onClose }) {
 
     const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
+        console.log(bookTitle);
 
-        await getBook({ variables: { title: "Hobbit" } });
+       const {data} = await getBook({ variables: { title: bookTitle } });
         if (loading) {
             console.log("loading");
         }
@@ -39,20 +39,7 @@ function AddBook({ open, onClose }) {
         if (data) {
             console.log(data);
         }
-        // console.log(data);
-        // try {
-        //     // add mutation here
-        //     const mutationResponse = await addBook({
-        //         variables: {
-        //             title,
-        //         },
-        //     });
-        // } catch (err) {
-        //     console.log(err);
-        // }
-
-        // not working, needs to close modal when form is submitted
-        // onClose;
+        // add mutation to add the book to the users list of books
     };
 
     return (
@@ -83,7 +70,11 @@ function AddBook({ open, onClose }) {
                                 )}
                             /> */}
                             <TextField
-                                onChange={(e) => setTitle(e.target.value)}
+                                onChange={(e) => {
+                                    console.log(e.target.value)
+                                    setTitle(e.target.value)
+                                    console.log(bookTitle)
+                                }}
                                 value={bookTitle}
                                 id="outlined-basic"
                                 label="Book Title"
