@@ -7,6 +7,7 @@ import {
   Paper,
   Card,
   CardActionArea,
+  useRadioGroup,
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import "./dashboard.scss";
@@ -17,12 +18,17 @@ import React from "react";
 import AddBook from "../../components/AddBook/AddBook";
 import { Settings } from "@mui/icons-material/";
 import Wishlist from "../../components/Wishlist/Wishlist";
+import Auth from "../../utils/auth"
 
 function Dashboard() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const loggedIn = Auth.loggedIn();
+  const user = Auth.getProfile()?.data;
+
+  console.log(user)
 
 
 
@@ -57,7 +63,7 @@ function Dashboard() {
                 fontWeight={600}
                 padding={3}
               >
-                Username
+                {loggedIn ? user.username : "Username"} 
               </Typography>
               <Settings
                 sx={{
