@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import Backdrop from "@mui/material/Backdrop";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-import { Autocomplete, Button, TextField } from "@mui/material";
+import {
+    Autocomplete,
+    Button,
+    TextField,
+    Backdrop,
+    Box,
+    Modal,
+    Fade,
+} from "@mui/material";
 import { QUERY_BOOK, QUERY_BOOKS } from "../../utils/queries";
 import { useLazyQuery } from "@apollo/client";
 
@@ -23,13 +27,15 @@ const style = {
 };
 function AddBook({ open, onClose }) {
     const [bookTitle, setTitle] = React.useState("");
+    const [bookResults, setBookResults] = React.useState([]);
+
     const [getBook, { loading, error, data }] = useLazyQuery(QUERY_BOOK);
 
     const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
         console.log(bookTitle);
 
-       const {data} = await getBook({ variables: { title: bookTitle } });
+        const { data } = await getBook({ variables: { title: bookTitle } });
         if (loading) {
             console.log("loading");
         }
@@ -38,9 +44,11 @@ function AddBook({ open, onClose }) {
         }
         if (data) {
             console.log(data);
+            setBookResults(data.book);
         }
-        // add mutation to add the book to the users list of books
     };
+        // add mutation to add the book to the users list of books
+
 
     return (
         <div>
@@ -61,28 +69,36 @@ function AddBook({ open, onClose }) {
                     <Box sx={style}>
                         Enter a book title:
                         <form onSubmit={handleFormSubmit}>
-                            {/* <Autocomplete
-                                id="book-search"
-                                freeSolo
-                                options={books.map((option) => option.title)}
-                                renderInput={(params) => (
-                                    <TextField {...params} label="Book Title" />
-                                )}
-                            /> */}
-                            <TextField
-                                onChange={(e) => {
-                                    console.log(e.target.value)
-                                    setTitle(e.target.value)
-                                    console.log(bookTitle)
-                                }}
-                                value={bookTitle}
-                                id="outlined-basic"
-                                label="Book Title"
-                                variant="outlined"
-                            />
-                            <Button type="submit" variant="outlined">
-                                Add Book
-                            </Button>
+                            <Box>
+                                <TextField
+                                    onChange={(e) => {
+                                        console.log(e.target.value);
+                                        setTitle(e.target.value);
+                                        console.log(bookTitle);
+                                    }}
+                                    value={bookTitle}
+                                    id="outlined-basic"
+                                    label="Book Title"
+                                    variant="outlined"
+                                />
+                                <Button type="submit" variant="outlined">
+                                    Add Book
+                                </Button>
+                            </Box>
+                            {bookResults.length > 0 && (
+                                <>
+                                    {bookResults.map((each) => (
+                                        // this onclick will run a mutation
+                                        <Button
+                                            onClick={() =>
+                                                console.log(each.title)
+                                            }
+                                        >
+                                            {each.title}
+                                        </Button>
+                                    ))}
+                                </>
+                            )}
                         </form>
                     </Box>
                 </Fade>

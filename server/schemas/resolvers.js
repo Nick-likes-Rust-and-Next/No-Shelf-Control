@@ -18,36 +18,26 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    books: async () => {
-      return Book.find()
+    books: async (parent, { title }) => {
+      return await Book.find({ title: { $regex: new RegExp(title, "is") } });
     },
     book: async (parent, { title }) => {
 
       try {
 
-        let book = await Book.find({ title })
+        let book = await Book.find({ title: { $regex: new RegExp(title, "is") } });
 
-        if (!book) {
+        if (book.length === 0) {
 
           book = await googleApi(title);
 
         }
-         
+        console.log("the book already exists")
         return book
 
       } catch (err) {
         console.error(err)
       }
-
-      // if (Book.findOne({ title })) {
-
-      //   return Book.findOne({ title })
-      // }
-
-      // else {
-
-      //   googleApi(title)
-      // }
     },
     userBook: async (parent, { username }) => { 
     }
