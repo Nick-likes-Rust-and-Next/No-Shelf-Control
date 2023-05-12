@@ -25,7 +25,7 @@ const resolvers = {
 
       try {
 
-        let book = await Book.findOne({ title })
+        let book = await Book.find({ title })
 
         if (!book) {
 

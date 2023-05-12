@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client'
+import { gql } from "@apollo/client";
 
 export const QUERY_BOOK = gql`
     query book($title: String!) {
@@ -10,7 +10,6 @@ export const QUERY_BOOK = gql`
             pageCount
             description
             image
-            users
         }
     }
 `;
