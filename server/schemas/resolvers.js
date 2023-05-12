@@ -23,15 +23,31 @@ const resolvers = {
     },
     book: async (parent, { title }) => {
 
-      if (Book.findOne({ title })) {
+      try {
 
-        return Book.findOne({ title })
+        let book = await Book.findOne({ title })
+
+        if (!book) {
+
+          book = await googleApi(title);
+
+        }
+         
+        return book
+
+      } catch (err) {
+        console.error(err)
       }
 
-      else {
+      // if (Book.findOne({ title })) {
 
-        googleApi(title)
-      }
+      //   return Book.findOne({ title })
+      // }
+
+      // else {
+
+      //   googleApi(title)
+      // }
     },
     userBook: async (parent, { username }) => { 
     }
