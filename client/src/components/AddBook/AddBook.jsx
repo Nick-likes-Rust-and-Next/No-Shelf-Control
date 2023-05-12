@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { Autocomplete, Button, TextField } from "@mui/material";
+import { useQuery  } from "@apollo/client";
+import { QUERY_BOOK } from "../../utils/queries";
 
 const books = [];
 
@@ -22,18 +24,29 @@ const style = {
 
 function AddBook({ open, onClose }) {
 
-    const handleFormSubmit = (e, onClose) => {
+    const [title, setTitle] = useState('')
+
+    const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
+
+        const [addBook, { error, data }] = useQuery(QUERY_BOOK)
 
         try {
             // add mutation here
+            const mutationResponse = await addBook({
+                variables: {
+                    title
+                }
+            })
+
+            console.log(mutationResponse)
 
         } catch (err) {
             console.log(err);
         }
 
         // not working, needs to close modal when form is submitted
-        onClose={onClose};
+        // onClose={onClose};
     }
 
     return (
@@ -64,6 +77,8 @@ function AddBook({ open, onClose }) {
                                 )}
                             /> */}
                             <TextField
+                                onChange={(e) => setTitle(e.target.value)}
+                                value={title}
                                 id="outlined-basic"
                                 label="Book Title"
                                 variant="outlined"
