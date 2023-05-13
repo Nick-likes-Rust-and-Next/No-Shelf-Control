@@ -10,7 +10,9 @@ import {
     Fade,
 } from "@mui/material";
 import { QUERY_BOOK, QUERY_BOOKS } from "../../utils/queries";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
+import Auth from "../../utils/auth";
+import { NEW_BOOK } from "../../utils/mutations";
 
 const books = [];
 
@@ -30,12 +32,15 @@ function AddBook({ open, onClose }) {
     const [bookResults, setBookResults] = React.useState([]);
 
     const [getBook, { loading, error, data }] = useLazyQuery(QUERY_BOOK);
+    const [updateBookList, {}] = useMutation(NEW_BOOK);
 
     const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
         console.log(bookTitle);
 
-        const { data } = await getBook({ variables: { title: bookTitle } });
+        const { data, loading, error } = await getBook({
+            variables: { title: bookTitle },
+        });
         if (loading) {
             console.log("loading");
         }
@@ -47,8 +52,33 @@ function AddBook({ open, onClose }) {
             setBookResults(data.book);
         }
     };
-        // add mutation to add the book to the users list of books
+    // add mutation to add the book to the users list of books
 
+    const updateUserBooks = async (e, each) => {
+        // e.preventDefault();
+        // const user = Auth.getProfile()?.data;
+        // let username = user.username;
+        // const { data } = await updateBookList({
+        //     variables: { username: "xxLeetSnipesxx" },
+        // });
+
+        try {
+            console.log("yeet");
+            let username = "xxLeetSnipesxx";
+            let book = each
+            console.log(book)
+            const mutationResponse = await updateBookList({
+                variables: {
+                    username,
+                    book
+                },
+            });
+
+            console.log(mutationResponse);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <div>
@@ -90,9 +120,7 @@ function AddBook({ open, onClose }) {
                                     {bookResults.map((each) => (
                                         // this onclick will run a mutation
                                         <Button
-                                            onClick={() =>
-                                                console.log(each.title)
-                                            }
+                                            onClick={() => updateUserBooks(each)}
                                         >
                                             {each.title}
                                         </Button>
