@@ -35,7 +35,7 @@ function AddBook({ open, onClose }) {
     const [updateBookList] = useMutation(ADD_BOOK);
     const user = Auth.getProfile()?.data;
 
-    const handleFormSubmit = async (e, onClose) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(bookTitle);
 
@@ -106,9 +106,10 @@ function AddBook({ open, onClose }) {
                                     {bookResults.map((each) => (
                                         // this onclick will run a mutation
                                         <Button
-                                            onClick={() =>
-                                                updateUserBooks(each)
-                                            }
+                                            onClick={() => {
+                                                updateUserBooks(each);
+                                                onClose();
+                                            }}
                                         >
                                             {each.title}
                                         </Button>
