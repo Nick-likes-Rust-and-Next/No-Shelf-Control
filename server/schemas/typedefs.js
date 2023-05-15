@@ -19,6 +19,7 @@ const typeDefs = gql`
     pageCount: Int
     description: String
     image: String
+  }
 
   type Auth {
     token: ID!

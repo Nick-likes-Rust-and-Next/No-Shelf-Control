@@ -33,6 +33,7 @@ function AddBook({ open, onClose }) {
 
     const [getBook, { loading, error, data }] = useLazyQuery(QUERY_BOOK);
     const [updateBookList] = useMutation(ADD_BOOK);
+    const user = Auth.getProfile()?.data;
 
     const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
@@ -55,23 +56,14 @@ function AddBook({ open, onClose }) {
     // add mutation to add the book to the users list of books
 
     const updateUserBooks = async (book) => {
-        console.log(book)
-        // e.preventDefault();
-        // const user = Auth.getProfile()?.data;
-        // let username = user.username;
-        // const { data } = await updateBookList({
-        //     variables: { username: "xxLeetSnipesxx" },
-        // });
-
-            console.log("yeet");
-            let username = "yaBoi";
-            console.log(book)
-            await updateBookList({
-                variables: {
-                    username,
-                    book,
-                },
-            });
+        let id = user._id;
+        let bookID = book._id;
+        await updateBookList({
+            variables: {
+                id,
+                bookID,
+            },
+        });
     };
 
     return (
@@ -114,7 +106,9 @@ function AddBook({ open, onClose }) {
                                     {bookResults.map((each) => (
                                         // this onclick will run a mutation
                                         <Button
-                                            onClick={() => updateUserBooks(each)}
+                                            onClick={() =>
+                                                updateUserBooks(each)
+                                            }
                                         >
                                             {each.title}
                                         </Button>
