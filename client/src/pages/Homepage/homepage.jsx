@@ -1,13 +1,28 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBacon } from '@fortawesome/free-solid-svg-icons';
 import './homepage.scss';
 import { Timeline } from 'react-twitter-widgets';
 import { Button } from '@mui/material';
 
 
 function Homepage() {
-  const popularBooks = ['Very Popular Book', 'Slightly Less Popular Book', 'Moderately Popular Book', 'Still Kinda Popular Book']
+  const popularBooks = [
+    {
+      title: 'Dune',
+      image: '/images/dune.png'
+    }, 
+    {
+      title: 'Eragon',
+      image: '/images/eragon.png'
+    }, 
+    {
+      title: 'Harry Potter and the Prisoner of Azkaban',
+      image: '/images/hppa.png'
+    }, 
+    {
+      title: 'Homeland',
+      image: '/images/homeland.png'
+    }
+  ]
   const popularBadges = ['Bacon', 'Book', 'Toast', 'Eggs'];
   const popularGenres = ['Mystery', 'Action', 'SciFi', 'Romance', 'History']
 
@@ -26,16 +41,19 @@ function Homepage() {
         <img src='/images/NSClogo.png'/>
       </div>
       <div className='popular-books-container'>
-        <h3>Popular Books</h3>
-        <ul>
-          {popularBooks.map((book) => (
-            <li style={{ listStyle: 'none' }}>{book}</li>
-          ))}
-        </ul>
+        <h3 style={{ fontFamily: "Bukhari Script" }}>Popular Books</h3>
+          <ul div className='popular-book-contents'>
+            {popularBooks.map((book) => (
+              <div style={{ display: "flex", flexDirection: "column", alignItems: 'center' }}>
+                <li style={{ listStyle: 'none' }}>{book.title}</li>
+                <img src={book.image} height={200} width={150}/>
+              </div>
+            ))}
+          </ul>
       </div>
       <div className='smaller-card-container'>
         <div className='popular-badges'>
-            <h3>Popular Badges</h3>
+            <h3 style={{ fontFamily: "Bukhari Script" }}>Popular Badges</h3>
             <ul>
               {popularBadges.map((badge) => (
                 <li style={{ listStyle: 'none' }}>{badge}</li>
@@ -43,7 +61,7 @@ function Homepage() {
             </ul>
         </div>
         <div className='popular-genres'>
-            <h3>Popular Genres</h3>
+            <h3 style={{ fontFamily: "Bukhari Script" }}>Popular Genres</h3>
             <ul>
               {popularGenres.map((genre) => (
                 <li style={{ listStyle: 'none' }}>{genre}</li>

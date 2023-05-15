@@ -6,6 +6,7 @@
         margin-top: 20px;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
     
     .logo-container {
@@ -24,10 +25,19 @@
         flex-direction: column;
         align-items: center;
         border: 1px solid black;
-        background: linear-gradient(180deg, red, white);
+        background: #ff00ff;
         border-radius: 10px;
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+        .popular-book-contents {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                width: 100%
+            }
     }
+
+
 
     .smaller-card-container {
         display: flex;
@@ -41,7 +51,7 @@
             align-items: center;
             border: 1px solid black;
             width: 25vw;
-            background: linear-gradient(180deg, blue, white);
+            background: #99d9ea;
             border-radius: 10px;
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
@@ -56,7 +66,7 @@
             align-items: center;
             border: 1px solid black;
             width: 25vw;
-            background: linear-gradient(180deg, green, white);
+            background: #5838c2;
             border-radius: 10px;
             box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
@@ -139,17 +149,25 @@ $breakpoint-phone: 425px;
         flex-direction: column;
         align-items: center;
 
+        .logo-container {
+            margin: 100px 0 30px 90px
+        }
+
         .logo-container img {
             width: 80vw;
             margin-left: 10vw;
+            margin: 50px;
+            margin-left: 0px;
         }
 
         .buttons-container {
             display: flex;
-            position: relative;
+            position: absolute;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            top: 65px;
+            right: 100px;
         }
 
         .popular-books-container {
