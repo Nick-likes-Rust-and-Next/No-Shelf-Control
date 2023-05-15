@@ -12,7 +12,7 @@ import {
 import { QUERY_BOOK, QUERY_BOOKS } from "../../utils/queries";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import { NEW_BOOK } from "../../utils/mutations";
+import { ADD_BOOK } from "../../utils/mutations";
 
 const books = [];
 
@@ -32,7 +32,7 @@ function AddBook({ open, onClose }) {
     const [bookResults, setBookResults] = React.useState([]);
 
     const [getBook, { loading, error, data }] = useLazyQuery(QUERY_BOOK);
-    const [updateBookList, {}] = useMutation(NEW_BOOK);
+    const [updateBookList] = useMutation(ADD_BOOK);
 
     const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
@@ -54,7 +54,8 @@ function AddBook({ open, onClose }) {
     };
     // add mutation to add the book to the users list of books
 
-    const updateUserBooks = async (e, each) => {
+    const updateUserBooks = async (book) => {
+        console.log(book)
         // e.preventDefault();
         // const user = Auth.getProfile()?.data;
         // let username = user.username;
@@ -62,22 +63,15 @@ function AddBook({ open, onClose }) {
         //     variables: { username: "xxLeetSnipesxx" },
         // });
 
-        try {
             console.log("yeet");
-            let username = "xxLeetSnipesxx";
-            let book = each
+            let username = "yaBoi";
             console.log(book)
-            const mutationResponse = await updateBookList({
+            await updateBookList({
                 variables: {
                     username,
-                    book
+                    book,
                 },
             });
-
-            console.log(mutationResponse);
-        } catch (err) {
-            console.log(err);
-        }
     };
 
     return (

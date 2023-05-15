@@ -75,13 +75,18 @@ const resolvers = {
 
             return { token, user };
         },
-        addBook: async (parent, { username }) => {
-            console.log("did we actually make it??");
-
+        addBook: async (parent, { username, book }) => {
             const user = await User.findOne({ username });
-
+        
+            if (!user) {
+                throw new Error('User not found');
+            }
+        
+            user.books.push(book);
+            await user.save();
+        
             return user.books;
-        },
+        }
     },
 };
 

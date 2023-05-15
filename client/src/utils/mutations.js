@@ -28,12 +28,14 @@ export const ADD_USER = gql`
     }
 `;
 
-export const NEW_BOOK = gql`
-    mutation Mutation($username: String!) {
-        addBook(username: $username) {
-            books {
-                author
-            }
-        }
+export const ADD_BOOK = gql`
+  mutation AddBook($username: String!, $bookId: ID!) {
+    addBook(username: $username, bookId: $bookId) {
+      books {
+        _id
+        title
+        author
+      }
     }
+  }
 `;
