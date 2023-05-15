@@ -71,6 +71,12 @@ const resolvers = {
       const book = await Book.create({title, subtitle, author, publishedDate, pageCount, description, image});
 
       return book;
+    },
+    updateUser: async (parent, { id, bookID }) => {
+
+      const updatedUser = await User.findByIdAndUpdate({ _id: id}, {$addToSet: { books: bookID } }, { new: true }).populate('books');
+
+      return updatedUser;
     }
   },
 };
