@@ -45,4 +45,4 @@ export const QUERY_USERNAME_BOOKS = gql`
         books {
             _id
     }
-`;
+}`;

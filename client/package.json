@@ -26,7 +26,8 @@
     "swiper": "^9.3.0",
     "graphql": "^16.6.0",
     "jwt-decode": "^3.1.2",
-    "@apollo/client": "^3.7.14"
+    "@apollo/client": "^3.7.14",
+    "@esbuild/darwin-arm64": "^0.17.19"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
