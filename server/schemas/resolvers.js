@@ -38,7 +38,10 @@ const resolvers = {
                 console.error(err);
             }
         },
-        userBook: async (parent, { username }) => {},
+        booksByIds: async (parent, { ids }) => {
+            const books = await Book.find({ _id: { $in: ids } });
+            return books;
+        },
     },
 
     Mutation: {

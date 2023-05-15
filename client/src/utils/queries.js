@@ -29,3 +29,13 @@ export const QUERY_BOOKS = gql`
         }
     }
 `;
+
+export const QUERY_BOOK_ID = gql`
+    query GetBooksByIds($ids: [ID!]!) {
+        booksByIds(ids: $ids) {
+            title
+            author
+            image
+        }
+    }
+`;
