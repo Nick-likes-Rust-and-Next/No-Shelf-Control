@@ -26,6 +26,8 @@ const googleApi = (title) => {
             const book = Book.create( bookData )
     
             return book;
+        } else {
+            console.log('No book found')
         }
     })
     .catch (err => {

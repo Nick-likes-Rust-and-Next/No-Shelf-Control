@@ -39,3 +39,10 @@ export const QUERY_BOOK_ID = gql`
         }
     }
 `;
+
+export const QUERY_USERNAME_BOOKS = gql`
+    query user($username: String!) {
+        books {
+            _id
+    }
+`;
