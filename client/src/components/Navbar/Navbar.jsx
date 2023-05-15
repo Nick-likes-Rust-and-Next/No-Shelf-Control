@@ -70,6 +70,38 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  function mobileLoginButton() {
+    if (sessionStorage.getItem('id_token') === null) {
+      return (
+      <>
+      <IconButton
+        size='large'
+        color='inherit'
+        onClick={() => location.href = '/login'}
+      >
+        <Login />
+      </IconButton>
+      <p>&nbsp;Login</p>
+      </>
+    )} else {
+      return (
+        <>
+        <IconButton
+          size="large"
+          edge="end"
+          aria-label="account of current user"
+          aria-controls={menuId}
+          aria-haspopup="true"
+          onClick={handleProfileMenuOpen}
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <p>&nbsp;Account</p>
+        </>
+      )
+    }
+  }
 
   function LoginButton() {
     if (sessionStorage.getItem('id_token') === null) {
@@ -192,7 +224,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Dashboard</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      {/* <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -203,6 +235,9 @@ export default function PrimarySearchAppBar() {
           <AccountCircle />
         </IconButton>
         <p>Profile</p>
+      </MenuItem> */}
+      <MenuItem>
+        {mobileLoginButton()}
       </MenuItem>
     </Menu>
   );

@@ -73,21 +73,21 @@ const resolvers = {
 
             const token = signToken(user);
 
-            return { token, user };
-        },
-        addBook: async (parent, { username, book }) => {
-            const user = await User.findOne({ username });
-        
-            if (!user) {
-                throw new Error('User not found');
-            }
-        
-            user.books.push(book);
-            await user.save();
-        
-            return user.books;
-        }
+      return { token, user };
     },
+    addBook: async (parent, {title, subtitle, author, publishedDate, pageCount, description, image}) => {
+
+      const book = await Book.create({title, subtitle, author, publishedDate, pageCount, description, image});
+
+      return book;
+    },
+    updateUser: async (parent, { id, bookID }) => {
+
+      const updatedUser = await User.findByIdAndUpdate({ _id: id}, {$addToSet: { books: bookID } }, { new: true }).populate('books');
+
+      return updatedUser;
+    }
+  },
 };
 
 module.exports = resolvers;
