@@ -10,6 +10,7 @@ export const QUERY_BOOK = gql`
             pageCount
             description
             image
+            _id
         }
     }
 `;

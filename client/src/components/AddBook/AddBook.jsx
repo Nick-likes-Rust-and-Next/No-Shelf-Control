@@ -10,7 +10,9 @@ import {
     Fade,
 } from "@mui/material";
 import { QUERY_BOOK, QUERY_BOOKS } from "../../utils/queries";
-import { useLazyQuery } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
+import Auth from "../../utils/auth";
+import { ADD_BOOK } from "../../utils/mutations";
 
 const books = [];
 
@@ -30,12 +32,16 @@ function AddBook({ open, onClose }) {
     const [bookResults, setBookResults] = React.useState([]);
 
     const [getBook, { loading, error, data }] = useLazyQuery(QUERY_BOOK);
+    const [updateBookList] = useMutation(ADD_BOOK);
+    const user = Auth.getProfile()?.data;
 
     const handleFormSubmit = async (e, onClose) => {
         e.preventDefault();
         console.log(bookTitle);
 
-        const { data } = await getBook({ variables: { title: bookTitle } });
+        const { data, loading, error } = await getBook({
+            variables: { title: bookTitle },
+        });
         if (loading) {
             console.log("loading");
         }
@@ -47,8 +53,18 @@ function AddBook({ open, onClose }) {
             setBookResults(data.book);
         }
     };
-        // add mutation to add the book to the users list of books
+    // add mutation to add the book to the users list of books
 
+    const updateUserBooks = async (book) => {
+        let id = user._id;
+        let bookID = book._id;
+        await updateBookList({
+            variables: {
+                id,
+                bookID,
+            },
+        });
+    };
 
     return (
         <div>
@@ -91,7 +107,7 @@ function AddBook({ open, onClose }) {
                                         // this onclick will run a mutation
                                         <Button
                                             onClick={() =>
-                                                console.log(each.title)
+                                                updateUserBooks(each)
                                             }
                                         >
                                             {each.title}

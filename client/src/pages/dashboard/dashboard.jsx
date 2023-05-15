@@ -26,6 +26,7 @@ function Dashboard() {
   const handleClose = () => setOpen(false);
   const loggedIn = Auth.loggedIn();
   const user = Auth.getProfile()?.data;
+  console.log(user)
   // Placeholder content for the starred books that user will choose to feature from their collection
   const starredBooks = ["book1", "book2", "book3"];
 
