@@ -44,5 +44,6 @@ export const QUERY_USERNAME_BOOKS = gql`
     query user($username: String!) {
         books {
             _id
+        }
     }
 `;
