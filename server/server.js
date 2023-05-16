@@ -17,7 +17,7 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-let index = process.env.NODE_ENV === 'production' ? "../client/dist" : "../client/index.html"
+let index = process.env.NODE_ENV === 'production' ? "../client/dist/index.html" : "../client/index.html"
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, "../client/dist")));
