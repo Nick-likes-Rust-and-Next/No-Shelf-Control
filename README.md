@@ -12,6 +12,8 @@ Go to the site [here]
 ## Contribution
 Fork and pull request
 ## Screenshots
+![image](https://github.com/Nick-likes-Rust-and-Next/No-Shelf-Control/assets/16601941/7af9c8ec-e3c1-410e-8dc5-209d72230ddf)
+![image](https://github.com/Nick-likes-Rust-and-Next/No-Shelf-Control/assets/16601941/2f2eee40-07ef-41b9-8830-373c271bf4e2)
 
 ## Questions
 
